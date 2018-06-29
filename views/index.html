@@ -1,0 +1,30 @@
+<h1>{{title}}</h1>
+<ul id="itemList">
+    {{#each items}}
+    <li><span>{{name}}</span><span>{{unit}}</span><span>{{price}}</span><span>{{promotion}}</span>
+        <button id="{{barcode}}" class="addButton"> +</button>
+    </li>
+    {{/each}}
+</ul>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+    var liList = document.getElementById("itemList");
+    liList.addEventListener('click',function (e) {
+        console.logO
+        if(e.target){
+            var itemBarcode = e.target.getAttribute("id");
+            console.log('itemBarcode',itemBarcode);
+
+            axios.post('/cart',itemBarcode)
+                .then(function (response) {
+                    console.log(response.data)
+                })
+                .catch((function (error) {
+                    console.log(error)
+                }))
+        }
+    })
+}
+
+</script>
