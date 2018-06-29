@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/',function (req,res) {
-    req.body();
+    console.log('cart')
 });
 
 router.post('/',function (req,res) {
-    console.log('body',res.body())
+    console.log('body',res.body());
 });
 
 module.exports = router;

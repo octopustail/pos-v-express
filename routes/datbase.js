@@ -20,21 +20,21 @@ exports.loadAllItems = function () {
             name: '苹果',
             unit: '斤',
             price: 5.50,
-            type:'No Promotion'
+            type: 'No Promotion'
         },
         {
             barcode: 'ITEM000003',
             name: '荔枝',
             unit: '斤',
             price: 15.00,
-            type:'No Promotion'
+            type: 'No Promotion'
         },
         {
             barcode: 'ITEM000004',
             name: '电池',
             unit: '个',
             price: 2.00,
-            type:'No Promotion'
+            type: 'No Promotion'
         },
         {
             barcode: 'ITEM000005',
