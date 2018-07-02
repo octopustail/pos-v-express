@@ -1,29 +1,48 @@
 <h1>{{title}}</h1>
 <ul id="itemList">
     {{#each items}}
-    <li><span>{{name}}</span><span>{{unit}}</span><span>{{price}}</span><span>{{promotion}}</span>
+    <li><span>{{name}}</span><span>{{unit}}</span><span>{{price}}</span><span>{{type}}</span>
         <button id="{{barcode}}" class="addButton"> +</button>
     </li>
     {{/each}}
 </ul>
+<button id="pay">结算</button>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
-window.onload = function () {
-    var liList = document.getElementById("itemList");
-    liList.addEventListener('click',function (e) {
-        if(e.target){
-            var itemBarcode = e.target.getAttribute("id");
-            console.log('itemBarcode',itemBarcode);
+    window.onload = function () {
+        var liList = document.getElementById("itemList");
+        var pay = document.getElementById("pay");
+        var selectedItemList = [];
 
-            axios.post('/cart',itemBarcode)
+
+        liList.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (e.target) {
+                var itemBarcode = e.target.getAttribute("id");
+                console.log('itemBarcode', itemBarcode);
+                selectedItemList.push(itemBarcode);
+
+
+            }
+        });
+
+        pay.addEventListener('click', function () {
+            axios.post('http://localhost:3000/cart', {item: selectedItemList})
                 .then(function (response) {
-                    console.log(response.data)
+                    console.log('succeed')
                 })
                 .catch((function (error) {
                     console.log(error)
-                }))
-        }
-    })
-}
+                }));
+            axios.get('http://localhost:3000/items')
+                .then(function (response) {
+                    console.log('succeed')
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+        })
+
+    }
 
 </script>

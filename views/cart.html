@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+<ul id="seletedItem">
+    {{#each items.list}}
+    <li><span>商品：{{name}}，</span><span>单位：{{unit}},</span><span>价格：{{price}}，</span><span>x</span><span>{{count}}</span><span>
+        <p><span>小计：{{total}}，</span>优惠：{{type}}，</span></p>
+    </li>
+    {{/each}}
+</ul>
+<p>============================================</p>
+<p>合计：{{items.totalPrice}}<span></span></p>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
